@@ -7,3 +7,30 @@ body{
     color: rgb(240, 239, 255);
     margin: 0;
 }
+
+.prompt-container{
+    display: flex;
+    flex-direction: column;
+}
+
+#prompt-form{
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    gap: 15px;
+}
+
+#prompt-input{
+    
+}
+
+#gen-script-btn{
+    border-radius: 10px;
+    background-color: #202060;
+    padding: 15px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    width: 100px;
+    border-style: none;
+    color: rgb(240, 239, 255);
+}
