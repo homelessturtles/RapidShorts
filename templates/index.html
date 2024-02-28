@@ -5,17 +5,17 @@
 {% endblock %}
 <link rel="script-stylesheet" href="{{ url_for('static', filename='css/script.css')}}">
 {% block body %}
-<h3>Enter your prompt</h3>
-<p>
-    {% if prompttxt %}
-        <p>{{prompttxt}}</p>
-    {% else %}
-        <p>no prompt inputted</p>
-    {% endif %}
-</p>
 <div class="prompt-container">
+    <h3>Enter your prompt</h3>
+    <p>
+        {% if prompttxt %}
+            <p>{{prompttxt}}</p>
+        {% else %}
+            <p>no prompt inputted</p>
+        {% endif %}
+    </p>
     <form action="{{url_for('prompt')}}" method="POST" id="prompt-form">
-        <textarea name="prompttxt" id="prompt-input" rows="10" cols="70">Describe what you want the video to be about...</textarea>
+        <textarea name="prompttxt" id="prompt-input" rows="10" cols="70" maxlength="200">Describe what you want the video to be about...</textarea>
         <input type="submit" id="gen-script-btn" value="generate script" />
     </form>
 </div>
