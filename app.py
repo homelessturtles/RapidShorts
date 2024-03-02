@@ -1,7 +1,12 @@
 from flask import Flask, render_template, request, url_for, redirect
-from script_gen import generate_script_sample
+from script_gen import generate_script_mock, generate_script
+from dotenv import load_dotenv
+import os
 
 app = Flask(__name__)
+
+load_dotenv()
+script_test = os.getenv("script_test")
 
 
 @app.route("/")
@@ -12,7 +17,12 @@ def index():
 @app.route("/script", methods=["POST"])
 def script():
     prompttxt = request.form['prompttxt']
-    generated_script = generate_script_sample(prompttxt)
+    if (script_test == "mock"):
+        print('mock function called')
+        generated_script = generate_script_mock(prompttxt)
+    if (script_test == "real"):
+        print('real function called')
+        generated_script = generate_script_mock(prompttxt)
     return render_template('script.html', scripttxt=generated_script)
 
 

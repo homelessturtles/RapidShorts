@@ -17,7 +17,7 @@ def format_sample_output(txt_output):
     return sample_output
 
 
-def generate_script_sample(prompt):
+def generate_script_mock(prompt):
     '''returns a pre defined generated script'''
 
     return f"prompt: {prompt}\nscript:{format_sample_output('script.txt')}"
@@ -34,5 +34,3 @@ def generate_script(prompt):
         ]
     )
     return completion.choices[0].message
-
-
