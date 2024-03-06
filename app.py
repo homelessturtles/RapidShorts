@@ -25,5 +25,8 @@ def script():
         generated_script = generate_script_mock(prompttxt)
     return render_template('script.html', scripttxt=generated_script)
 
+@app.route("/clips", methods=["POST"])
+def clips():
+    return render_template('clips.html')
 
 app.run(host="0.0.0.0", port=80, debug=True)
