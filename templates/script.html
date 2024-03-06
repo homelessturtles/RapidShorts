@@ -9,7 +9,8 @@
     <p>
         {{scripttxt}}
     </p>
-    <form>
+    <form action="{{url_for('clips')}}" method="POST" id="clips-form-container">
+        <input name="scripttext" value="{{scripttxt}}" style="display: none">
         <input type="submit" id="gen-btn" value="generate video">
     </form>
 </div>
