@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, url_for, redirect
 from script_gen import generate_script_mock, generate_script
+from clips_gen import parse_script
 from dotenv import load_dotenv
 import os
 
@@ -22,13 +23,14 @@ def script():
         generated_script = generate_script_mock(prompttxt)
     if (script_test == "real"):
         print('real function called')
-        generated_script = generate_script_mock(prompttxt)
+        generated_script = generate_script(prompttxt)
     return render_template('script.html', scripttxt=generated_script)
 
 
 @app.route("/clips", methods=["POST"])
 def clips():
     scripttext = request.form['scripttext']
+    parse_script(scripttext)
     return render_template('clips.html')
 
 
