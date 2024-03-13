@@ -30,4 +30,3 @@ def source_clips_pexley(query):
         clips.append({'author':author, 'vid_link':vid_link, 'img_link': img_link})
     return clips[0:3]
 
-
