@@ -22,12 +22,12 @@ def source_clips_pexley(query):
         f'https://api.pexels.com/videos/search?query={query}', headers=headers).json()
     for video in response['videos']:
         author = video['user']['name']
+        img_link = video['video_pictures'][0]['picture']
         for video_file in video['video_files']:
             if video_file['quality'] == 'hd':
-                link = video_file['link']
+                vid_link = video_file['link']
                 break
-        clips.append({'author':author, 'link':link})
-    return clips
+        clips.append({'author':author, 'vid_link':vid_link, 'img_link': img_link})
+    return clips[0:3]
 
-for clip in source_clips_pexley('rocket ship'):
-    print(clip)
+
