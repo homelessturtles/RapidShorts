@@ -36,3 +36,19 @@ body{
     border-style: none;
     color: rgb(240, 239, 255);
 }
+
+.clips-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.clips-row{
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+}
+
+.clips-container img{
+    border-radius: 12px;
+}

@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, url_for, redirect
 from script_gen import generate_script_mock, generate_script
-from clips_gen import source_clips_pexley
+from clips_gen import source_clips_pexley, get_scene_clips
+from script_parser import parse_script
 from dotenv import load_dotenv
 import os
 
@@ -30,7 +31,13 @@ def script():
 @app.route("/clips", methods=["POST"])
 def clips():
     scripttext = request.form['scripttext']
-    return render_template('clips.html')
+    parsed_script = parse_script(scripttext)
+    print(parsed_script)
+    
+    test_keywords = ['lions', 'nature', 'family']
+    scene_clips = get_scene_clips(test_keywords)        
+    
+    return render_template('clips.html', sceneclips = scene_clips)
 
 
 app.run(host="0.0.0.0", port=80, debug=True)

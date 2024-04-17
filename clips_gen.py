@@ -24,3 +24,13 @@ def source_clips_pexley(query):
         clips.append({'author':author, 'vid_link':vid_link, 'img_link': img_link})
     return clips[0:3]
 
+def get_scene_clips(queries):
+    '''get clips for keywords from all scenes'''
+    scene_clips_info = {}
+    for query in queries:
+        scene_clips_info[query] = source_clips_pexley(query)
+
+    return scene_clips_info
+
+
+print(get_scene_clips(['lions', 'nature', 'family']))

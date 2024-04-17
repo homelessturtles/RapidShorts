@@ -5,12 +5,24 @@
 {% endblock %}
 
 {% block body %}
-<div class="clips-container">
-    <h1>
-        Clips for video
-    </h1>
-    <div>
-        
+<div>
+    <div class="clips-container">
+        <h1>
+            Clips for video
+        </h1>
+        {% for k,v in sceneclips.items() %}
+            <div>
+                <p>{{k}}</p>
+                <div class="clips-row">
+                    {% for i in range(3)%}
+                    <div class="clip">
+                        <a href="{{sceneclips[k][i]['vid_link']}}"><img src="{{sceneclips[k][i]['img_link']}}" href=""></a>
+                        <p>author: {{sceneclips[k][i]['author']}}</p>
+                    </div>
+                    {%endfor%}
+                </div>
+            </div>
+        {%endfor%}
     </div>
 </div>
 {% endblock %}

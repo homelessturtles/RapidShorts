@@ -26,11 +26,11 @@ def generate_script_mock(prompt):
 def generate_script(prompt):
     '''return generated script from prompt using OpenAI GPT-3.5'''
 
-    requirements = f"Create short form video script using the following requirements. {prompt} For each scene, specify one keyword describing the scene. USE THE FORMAT FOR EACH SCENE Keywords: [*Insert keywords*], Narrator: [*insert narration*]. Create a MAXIMUM of 4 scenes."
+    requirements = f"Create short form video script using the following requirements. {prompt} For each scene, specify one keyword describing the scene. USE THE FORMAT FOR EACH SCENE Keywords: [*Insert keywords*], Narrator: [*insert narration*]. Create 4 scenes."
     completion = client.chat.completions.create(
         model='gpt-3.5-turbo',
         messages=[
             {"role": "user", "content": requirements}
         ]
     )
-    return completion.choices[0].message
+    return completion.choices[0].message.content
