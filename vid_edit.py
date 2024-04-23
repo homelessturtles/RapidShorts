@@ -42,5 +42,7 @@ clip2 = VideoFileClip(scenes_dict['scene1']['clips'][1])
 scene1_audio_length = get_audio_length('Test_Assets/scene1.mp3')
 test = concatenate_clips(clip1, clip2, scene1_audio_length)
 test.write_videofile('test_video.mp4', codec='libx264', fps=24)
-        
+
+clip1.close()
+clip2.close()
 
