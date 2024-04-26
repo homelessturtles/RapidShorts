@@ -7,6 +7,7 @@ scenes_dict = {
     'scene3': {'clips': ['Test_Assets/lions_1.mp4', 'Test_Assets/lions_2.mp4'], 'narration': 'Test_Assets/scene3.mp3'}
 }
 
+
 def get_audio_length(filename):
     try:
         audio_data, sample_rate = sf.read(filename)
@@ -15,16 +16,24 @@ def get_audio_length(filename):
     except Exception as e:
         print("Error:", e)
         return None
-    
-def edit_clips(scenes_dict): 
-    for k,v in scenes_dict:
+
+
+def edit_clips(scenes_dict):
+    scenes = []
+
+    for k, v in scenes_dict.items():
         clip_1 = VideoFileClip(scenes_dict[k]['clips'][0])
         clip_2 = VideoFileClip(scenes_dict[k]['clips'][1])
         narration = scenes_dict[k]['narration']
         narration_length = get_audio_length(narration)
+        scenes.append(concatenate_clips(clip_1, clip_2,
+                      narration_length, AudioFileClip(narration)))
+
+    final_edit = concatenate_videoclips(scenes)
+    return final_edit
 
 
-def concatenate_clips(clip1, clip2, duration):
+def concatenate_clips(clip1, clip2, duration, narration):
     duration_clip1 = clip1.duration
     duration_clip2 = clip2.duration
 
@@ -33,16 +42,13 @@ def concatenate_clips(clip1, clip2, duration):
     elif duration < duration_clip1:
         final_clip = clip1.subclip(0, duration)
     else:
-        final_clip = concatenate_videoclips([clip1, clip2.subclip(0, duration - duration_clip1)])
+        final_clip = concatenate_videoclips(
+            [clip1, clip2.subclip(0, duration - duration_clip1)])
 
-    return final_clip
+    final_clip_w_audio = final_clip.set_audio(narration)
 
-clip1 = VideoFileClip(scenes_dict['scene1']['clips'][0])
-clip2 = VideoFileClip(scenes_dict['scene1']['clips'][1])
-scene1_audio_length = get_audio_length('Test_Assets/scene1.mp3')
-test = concatenate_clips(clip1, clip2, scene1_audio_length)
-test.write_videofile('test_video.mp4', codec='libx264', fps=24)
+    return final_clip_w_audio
 
-clip1.close()
-clip2.close()
 
+test_edit = edit_clips(scenes_dict)
+test_edit.write_videofile('test_video.mp4', codec='libx264', fps=24)
