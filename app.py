@@ -4,12 +4,17 @@ from clips_gen import source_clips_pexley, get_scene_clips
 from script_parser import parse_script
 from dotenv import load_dotenv
 import os
+import firebase_admin
+from firebase_admin import firestore, initialize_app, credentials, auth
 
 app = Flask(__name__)
 
 load_dotenv()
 script_test = os.getenv("script_test")
 
+cred = credentials.Certificate("rapidshorts-firebase.json")
+firebase_admin.initialize_app(cred)
+db = firestore.client()
 
 @app.route("/")
 def index():
