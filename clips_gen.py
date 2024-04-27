@@ -32,5 +32,3 @@ def get_scene_clips(queries):
 
     return scene_clips_info
 
-
-print(get_scene_clips(['lions', 'nature', 'family']))

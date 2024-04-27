@@ -1,0 +1,33 @@
+[Opening Scene: Morning Hectic]
+Keyword: Busy
+Narrator: "Meet Mark, a busy dad in his 30s juggling work and family life."
+
+[Scene 2: SafeRide Reveal]
+Keyword: Sleek
+Narrator: "Introducing the all-new SafeRide E-Bike - sleek, stylish, and designed for your lifestyle."
+
+[Scene 3: Safety Features]
+Keyword: Protected
+Narrator: "Feel protected with advanced safety features - anti-lock brakes, lights - ensuring a secure ride for your family."
+
+[Scene 4: Comfortable Ride]
+Keyword: Ergonomic
+Narrator: "Experience the ergonomic design and adjustable seat for a comfortable ride every time."
+
+[Scene 5: Family Bonding]
+Keyword: Adventurous
+Narrator: "Turn every ride into an adventure - creating lasting memories with your young ones."
+
+[Scene 6: Low Maintenance]
+Keyword: Effortless
+Narrator: "Effortless maintenance - giving you more time with your family, less time worrying about your ride."
+
+[Closing Scene: Call to Action]
+Keyword: Upgrade
+Narrator: "Upgrade your family's lifestyle with the SafeRide E-Bike. Visit our website or your nearest dealership today."
+
+[Closing Shot: Happy Family Riding]
+Keyword: Joyful
+[Show Mark and his family riding together, smiles all around]
+
+[Background Music Fades Out]
