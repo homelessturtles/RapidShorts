@@ -67,8 +67,7 @@ def clips():
         print(scene_clip_links)
         new_element = {curr_scene: scene_clip_links}
         doc_ref.update(new_element)
-        count+=1
-
+        count += 1
 
     return render_template('clips.html', sceneclips=scene_clips)
 
