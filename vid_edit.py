@@ -29,7 +29,7 @@ def edit_clips(scenes_dict):
         scenes.append(concatenate_clips(clip_1, clip_2,
                       narration_length, AudioFileClip(narration)))
 
-    final_edit = concatenate_videoclips(scenes)
+    final_edit = concatenate_videoclips(scenes, method='compose')
     return final_edit
 
 
@@ -38,17 +38,19 @@ def concatenate_clips(clip1, clip2, duration, narration):
     duration_clip2 = clip2.duration
 
     if duration >= duration_clip1 + duration_clip2:
-        final_clip = concatenate_videoclips([clip1, clip2])
+        final_clip = concatenate_videoclips([clip1, clip2], method='compose')
     elif duration < duration_clip1:
         final_clip = clip1.subclip(0, duration)
     else:
         final_clip = concatenate_videoclips(
-            [clip1, clip2.subclip(0, duration - duration_clip1)])
+            [clip1, clip2.subclip(0, duration - duration_clip1)], method='compose')
 
     final_clip_w_audio = final_clip.set_audio(narration)
 
     return final_clip_w_audio
 
 
+'''
 test_edit = edit_clips(scenes_dict)
 test_edit.write_videofile('test_video.mp4', codec='libx264', fps=24)
+'''
