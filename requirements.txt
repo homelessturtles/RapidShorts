@@ -1,5 +1,6 @@
 firebase_admin==6.5.0
 Flask==3.0.3
+gunicorn==22.0.0
 gTTS==2.5.1
 moviepy==1.0.3
 openai==1.26.0
