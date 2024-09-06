@@ -1,0 +1,15 @@
+{% extends 'base.html' %} 
+
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
+<div class="prompt-container">
+    <h3>Enter your prompt</h3>
+    <form action="{{url_for('genvid')}}" method="POST" id="prompt-form">
+        <textarea name="prompttxt" id="prompt-input" rows="10" cols="70" maxlength="200">Describe what you want the video to be about...</textarea>
+        <input type="submit" id="gen-btn" value="generate script" />
+    </form>
+</div>
+{% endblock %}
