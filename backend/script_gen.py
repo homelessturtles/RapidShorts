@@ -6,14 +6,14 @@ from string import Template
 
 load_dotenv()
 
-
 client = OpenAI(
     api_key=os.getenv("OPENAI_API_KEY")
 )
 
 sample_prompt = 'how to make an iphone application'
 
-#returns scenes in json format
+# returns scenes in python dict format
+
 def generate_script(topic):
     '''return generated script from prompt using OpenAI GPT-3.5'''
 
@@ -21,7 +21,7 @@ def generate_script(topic):
     I need a list of 4 distinct scenes. Each scene should be related to the following topic: {topic}
 
     Each scene should have:
-    - A keyword summarizing the main element of the scene.
+    - One word keyword summarizing the main element of the scene.
     - A brief narration describing the scene.
 
     Please return the output in the following JSON format:
@@ -53,5 +53,3 @@ def generate_script(topic):
         ]
     )
     return json.loads(completion.choices[0].message.content)
-
-

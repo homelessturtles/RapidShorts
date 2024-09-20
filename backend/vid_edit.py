@@ -15,7 +15,7 @@ def edit_clips(scenes_dict):
         clip_1 = VideoFileClip(scenes_dict[k]['clips'][0])
         clip_2 = VideoFileClip(scenes_dict[k]['clips'][1])
         narration = scenes_dict[k]['narration']
-        audio_file = narration
+        audio_file = AudioFileClip(narration)
         narration_length = audio_file.duration
         scenes.append(concatenate_clips(clip_1, clip_2,
                       narration_length, audio_file))

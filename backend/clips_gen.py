@@ -1,28 +1,30 @@
+import urllib.parse
 import requests
 from dotenv import load_dotenv
 import os
 import json
 from parse import search
+import urllib
 
 load_dotenv()
-pexels_key = os.getenv("PEXELS_API_KEY")
-headers = {'Authorization': pexels_key}
+pixabay_key = "45844245-bd11892330118aaac998c12c4"
 
+# Make api call to pexley, return author, vid link, img link
 def source_clips_pexley(query):
-    '''make api call to pexley, return author and video clips'''
-
     clips = []
-    response = requests.get(
-        f'https://api.pexels.com/videos/search?query={query}', headers=headers).json()
-    for video in response['videos']:
-        author = video['user']['name']
-        img_link = video['video_pictures'][0]['picture']
-        for video_file in video['video_files']:
-            if video_file['quality'] == 'hd':
-                vid_link = video_file['link']
-                break
-        clips.append({'author':author, 'vid_link':vid_link, 'img_link': img_link})
-    return clips[0:3]
+
+    try:
+        response = requests.get(
+            f'https://pixabay.com/api/videos/?key={pixabay_key}&q={urllib.parse.quote_plus(query)}').json()
+    except Exception as e:
+        print(e)
+
+    for video in response["hits"][0:3]:
+        url = list(video["videos"].values())[1]["url"]
+        clips.append(url)
+
+    return clips
+
 
 def get_scene_clips(queries):
     '''get clips for keywords from all scenes'''
@@ -32,11 +34,12 @@ def get_scene_clips(queries):
 
     return scene_clips_info
 
+
 def download_video(url, save_path):
     try:
         # Send a GET request to the URL
         response = requests.get(url)
-        
+
         # Check if the request was successful (status code 200)
         if response.status_code == 200:
             # Open the local file in binary write mode and write the video data
@@ -45,7 +48,8 @@ def download_video(url, save_path):
             print("Video downloaded successfully.")
             return True
         else:
-            print(f"Failed to download video. Status code: {response.status_code}")
+            print(
+                f"Failed to download video. Status code: {response.status_code}")
             return False
     except Exception as e:
         print(f"Error occurred while downloading video: {e}")
