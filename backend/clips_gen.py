@@ -3,7 +3,6 @@ import requests
 from dotenv import load_dotenv
 import os
 import json
-from parse import search
 import urllib
 
 load_dotenv()

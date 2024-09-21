@@ -1,5 +1,4 @@
 from moviepy.editor import *
-import soundfile as sf
 
 # example format for video editing algorithm
 scenes_dict = {
