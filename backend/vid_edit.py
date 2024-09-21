@@ -13,16 +13,20 @@ def edit_clips(scenes_dict):
 
     for k, v in scenes_dict.items():
         clip_1 = VideoFileClip(scenes_dict[k]['clips'][0])
-        clip_2 = VideoFileClip(scenes_dict[k]['clips'][1])
-        narration = scenes_dict[k]['narration']
-        audio_file = AudioFileClip(narration)
+        audio_file = AudioFileClip(scenes_dict[k]['narration'])
         narration_length = audio_file.duration
-        scenes.append(concatenate_clips(clip_1, clip_2,
-                      narration_length, audio_file))
+
+        if len(scenes_dict[k]['clips'])>1:
+            clip_2 = VideoFileClip(scenes_dict[k]['clips'][1])
+            scenes.append(concatenate_clips(clip_1, clip_2,
+                        narration_length, audio_file))
+        else:
+            clip_1 = clip_1.set_duration(0,narration_length)
+            clip_1.set_audio(audio_file)
+            scenes.append(clip_1)
 
     final_edit = concatenate_videoclips(scenes, method='compose')
     return final_edit
-
 
 def concatenate_clips(clip1, clip2, duration, narration):
     duration_clip1 = clip1.duration

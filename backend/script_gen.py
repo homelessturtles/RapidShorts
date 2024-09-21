@@ -18,11 +18,11 @@ def generate_script(topic):
     '''return generated script from prompt using OpenAI GPT-3.5'''
 
     prompt = """
-    I need a list of 4 distinct scenes. Each scene should be related to the following topic: {topic}
+    I need a script for short form video with 4 distinct scenes. Each scene should be related to the following topic: {topic}
 
     Each scene should have:
     - One word keyword summarizing the main element of the scene.
-    - A brief narration describing the scene.
+    - A brief narration for that scene.
 
     Please return the output in the following JSON format:
 
