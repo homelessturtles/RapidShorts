@@ -14,6 +14,9 @@ import {
 import { useEffect, useState } from "react";
 import axios from "axios";
 
+export const BASE_URL =
+  import.meta.env.MODE === "development" ? "http://127.0.0.1:5000/api" : "/api";
+
 function App() {
   const [prompt, setPrompt] = useState("");
   const [response, setResponse] = useState("");
