@@ -29,7 +29,7 @@ function App() {
     setshowSpin(true);
     try {
       const res = await axios
-        .post("http://127.0.0.1:5000/api/process_prompt", {
+        .post(BASE_URL + "/process_prompt", {
           prompt,
         })
         .then((res) => {
