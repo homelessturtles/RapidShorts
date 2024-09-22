@@ -1,10 +1,8 @@
 from flask import Flask, request, jsonify, send_from_directory
-from flask_cors import CORS
 from test import test
 import os
 
 app = Flask(__name__)
-# CORS(app, origins=['https://rapidshorts.onrender.com'])
 
 frontend_folder = os.path.join(os.getcwd(), "..", "frontend")
 dist_folder = os.path.join(frontend_folder, "dist")
