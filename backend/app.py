@@ -17,7 +17,7 @@ def index(filename):
     return send_from_directory(dist_folder,filename)
 
 @app.route("/api/process_prompt", methods=['POST'])
-def index():
+def process_prompt_fun():
     data = request.get_json()
     prompt = data.get('prompt')
     url = test(prompt)
